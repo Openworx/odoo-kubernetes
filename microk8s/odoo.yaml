@@ -12,12 +12,12 @@ metadata:
   name: odoo-db
   namespace: odoo
   labels:
-    app: odoo-shop
+    app: odoo-svr
 spec:
   ports:
     - port: 5432
   selector:
-    app: odoo-shop
+    app: odoo-svr
     tier: backend
   type: NodePort
 ---
@@ -27,14 +27,14 @@ metadata:
   name: odoo-db
   namespace: odoo
   labels:
-    app: odoo-shop
+    app: odoo-svr
 spec:
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: odoo-shop
+        app: odoo-svr
         tier: backend
     spec:
       containers:
@@ -61,32 +61,32 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: odoo-shop
+  name: odoo-svr
   namespace: odoo
   labels:
-    app: odoo-shop
+    app: odoo-svr
 spec:
   ports:
     - port: 8069
   selector:
-    app: odoo-shop
+    app: odoo-svr
     tier: frontend
   type: NodePort
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: odoo-shop
+  name: odoo-svr
   namespace: odoo
   labels:
-    app: odoo-shop
+    app: odoo-svr
 spec:
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: odoo-shop
+        app: odoo-svr
         tier: frontend
     spec:
       containers:
@@ -147,7 +147,7 @@ metadata:
   name: odoo-pvc
   namespace: odoo
   labels:
-    app: odoo-shop
+    app: odoo-svr
 spec:
   accessModes:
     - ReadWriteOnce
@@ -161,7 +161,7 @@ metadata:
   name: odoo-db-pvc
   namespace: odoo
   labels:
-    app: odoo-shop
+    app: odoo-svr
 spec:
   accessModes:
     - ReadWriteOnce
