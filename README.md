@@ -5,6 +5,9 @@ Odoo on Kubernetes
 Running Odoo on MicroK8s:
 
 Install MicroK8s https://microk8s.io/
+```
+sudo snap install microk8s --classic
+```
 
 Enable persistent storage: 
 ```
